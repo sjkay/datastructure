@@ -162,69 +162,6 @@ class RBTree:
         if x != self.sentinel:
             x.parent = y
 
-
-class RBTreeIter(object):
-
-    def __init__ (self, tree):
-        self.tree = tree
-        self.index = -1  # ready to iterate on the next() call
-        self.node = None
-        self.stopped = False
-
-    def __iter__ (self):
-        """ Return the current item in the container
-        """
-        return self.node.value
-
-    def next (self):
-        """ Return the next item in the container
-            Once we go off the list we stay off even if the list changes
-        """
-        if self.stopped or (self.index + 1 >= self.tree.__len__()):
-            self.stopped = True
-            raise StopIteration
-        #
-        self.index += 1
-        if self.index == 0:
-            self.node = self.tree.firstNode()
-        else:
-            self.node = self.tree.nextNode (self.node)
-        return self.node.value
-
-    def insertFixup(self, x):
-        while x != self.root and x.parent.color == RED:
-            if x.parent == x.parent.parent.left:
-                y = x.parent.parent.right
-                if y.color == RED:
-                    x.parent.color = BLACK
-                    y.color = BLACK
-                    x.parent.parent.color = RED
-                    x = x.parent.parent
-                else:
-                    if x == x.parent.right:
-                        x = x.parent
-                        self.rotateLeft(x)
-                    x.parent.color = BLACK
-                    x.parent.parent.color = RED
-                    self.rotateRight(x.parent.parent)
-            else:
-                y = x.parent.parent.left
-                if y.color == RED:
-                    x.parent.color = BLACK
-                    y.color = BLACK
-                    x.parent.parent.color = RED
-                    x = x.parent.parent
-                else:
-                    if x == x.parent.left:
-                        x = x.parent
-                        self.rotateRight(x)
-                    x.parent.color = BLACK
-                    x.parent.parent.color = RED
-                    self.rotateLeft(x.parent.parent)
-
-        self.root.color = BLACK
-
-
 def main():
     bst = RBTree()
     bst.insert(bst.root, RBNode(5))
