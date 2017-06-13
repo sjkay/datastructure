@@ -25,25 +25,25 @@ class RBNode:
 class RBTree:
     def __init__(self):
         self.sentinel = RBNode()
-        self.sentinel.left = self.sentinel.right = self.sentinel
-        self.sentinel.color = BLACK
-        self.sentinel.nonzero = 0
         self.root = self.sentinel
-        self.count = 0
-    def insert(self,tree,n):
-        if self.root is None:
-            self.root = n
-        elif n.val < tree.val:
-            if tree.left is None:
-                tree.left = n
-            else:
-                self.insert(tree.left,n)
-        else:
-            if tree.right is None:
-                tree.right = n
-            else:
-                self.insert(tree.right,n)
-    def insertNode(self, key, value):
+    def search(self, k):
+        return self.root.search(k)
+    def minimum(self):
+        return self.root.minimum()
+    # def insert(self,tree,n):
+    #     if self.root is None:
+    #         self.root = n
+    #     elif n.val < tree.val:
+    #         if tree.left is None:
+    #             tree.left = n
+    #         else:
+    #             self.insert(tree.left,n)
+    #     else:
+    #         if tree.right is None:
+    #             tree.right = n
+    #         else:
+    #             self.insert(tree.right,n)
+    def insertNode(self, k):
         current = self.root
         parent = None
         while current != self.sentinel:
@@ -58,7 +58,6 @@ class RBTree:
         x = RBNode(key, value)
         x.left = x.right = self.sentinel
         x.parent = parent
-        self.count = self.count + 1
         if parent:
             if self.__cmp(key, parent.key) < 0:
                 parent.left = x
@@ -67,11 +66,7 @@ class RBTree:
         else:
             self.root = x
         self.insertFixup(x)
-        return x
-    def search(self, k):
-        return self.root.search(k)
-    def minimum(self):
-        return self.root.minimum()
+        
     def transplant(self, u, v):
         if u.parent == None:
             self.root = v
