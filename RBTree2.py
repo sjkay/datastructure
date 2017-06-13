@@ -66,7 +66,7 @@ class RBTree:
         else:
             self.root = x
         self.insertFixup(x)
-        
+
     def transplant(self, u, v):
         if u.parent == None:
             self.root = v
@@ -156,3 +156,18 @@ class RBTree:
         y.right = x
         if x != self.sentinel:
             x.parent = y
+
+def main():
+    bst = RBTree()
+    bst.insertNode(bst.root, RBNode(5))
+    bst.insertNode(bst.root, RBNode(2))
+    bst.insertNode(bst.root, RBNode(-4))
+    bst.insertNode(bst.root, RBNode(3))
+    bst.insertNode(bst.root, RBNode(12))
+    bst.insertNode(bst.root, RBNode(9)
+    bst.insertNode(bst.root, RBNode(21))
+    bst.insertNode(bst.root, RBNode(19))
+    bst.insertNode(bst.root, RBNode(25))
+    print('#####')
+    bst.print(bst.root,0)
+main()
