@@ -297,10 +297,13 @@ if __name__ == "__main__":
       break
     if (line[0] != '-'):
       tree.add(line)
+    else:
+      tree.delete(Node(line[1:]))
   f.close()
   
 
   print(tree)
+  #print(tree.black_height())
 
   for node in tree.inorder_walk():
     print("%s" % node)
