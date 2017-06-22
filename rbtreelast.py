@@ -297,24 +297,28 @@ if __name__ == "__main__":
   f = open("test01.txt", 'r')
   tree = RedBlackTree()
   lines = f.readlines()
+  insert=0
+  deleted=0
+  miss=0
   for line in lines:
     if (line[0] == '0'):
       break
     if (line[0] != '-'):
       tree.add(line)
+      insert += 1
     else:
       tree.delete(Node(line[1:]))
+      deleted += 1
   f.close()
   
   print("filename=",f.name)
   print("total = ", tree.size)
-  print("insert = ")
-  print("deleted = ")
-  print("miss = ")
-  print("nb =")
-  print("bh =")
-  print(tree)
-  #print(tree.black_height())
+  print("insert = ", insert)
+  print("deleted = ", deleted)
+  print("miss = ", miss)
+  print("nb =", )
+  print("bh =", tree.black_height())
+  #print(tree)
 
   for node in tree.inorder_walk():
     print("%s%s" % node)
