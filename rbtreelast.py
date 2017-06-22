@@ -318,9 +318,22 @@ if __name__ == "__main__":
   print("miss = ", miss)
   print("nb =", )
   print("bh =", tree.black_height())
-  #print(tree)
+  print(tree.inorder_walk)
 
   for node in tree.inorder_walk():
     print("%s%s" % node)
+
+  s = open("search01.txt", 'r')
+  output = open("output01.txt", 'w')
+  search = s.readlines()
+  for line in search:
+  	if (line == '0'):
+  		break
+  	x = tree.search(line)
+  	output.write(""+x.left.key + x.key + x.right.key)
+  	print(x.left, x.key, x.right)
+  	#print(x.left.key, x.key, x.right.key)
+  s.close()
+  output.close()
 
 
