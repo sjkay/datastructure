@@ -48,9 +48,13 @@ class RedBlackTree:
   def __init__(self):
     self.root = NilNode.instance()
     self.size = 0
+   # self.total = 0
+   # self.insert = 0
+   # self.deleted = 0
+   # self.miss = 0
     
-  def __str__(self):
-    return ("(root.size = %d)\n" % self.size)  + str(self.root)
+  #def __str__(self):
+  #  return ("(root.size = %d)\n" % self.size)  + str(self.root)
 
   def add(self, key):
     self.insert(Node(key))
@@ -152,9 +156,9 @@ class RedBlackTree:
     x = self.minimum()
     while x:
       if (x.color==True):
-        yield x.key +'R'
+        yield (x.key,'R')
       if (x.color==False):
-        yield x.key +'B'
+        yield (x.key,'B')
       x = self.successor(x)
 
   def reverse_inorder_walk(self, x = None):
@@ -239,6 +243,7 @@ class RedBlackTree:
         y.right = z
     
     self.size += 1
+    #self.insert += 1
 
   def __delete_fixup(self, x):
     while x != self.root and x.color == Node.BLACK:
@@ -301,11 +306,17 @@ if __name__ == "__main__":
       tree.delete(Node(line[1:]))
   f.close()
   
-
+  print("filename=",f.name)
+  print("total = ", tree.size)
+  print("insert = ")
+  print("deleted = ")
+  print("miss = ")
+  print("nb =")
+  print("bh =")
   print(tree)
   #print(tree.black_height())
 
   for node in tree.inorder_walk():
-    print("%s" % node)
+    print("%s%s" % node)
 
 
