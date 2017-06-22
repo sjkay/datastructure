@@ -327,10 +327,10 @@ if __name__ == "__main__":
   output = open("output01.txt", 'w')
   search = s.readlines()
   for line in search:
-  	if (line == '0'):
+  	if (line[0] == '0'):
   		break
   	x = tree.search(line)
-  	output.write(""+x.left + x.key + x.right)
+  	output.write("x.key")
   	#output.write(""+x.left.key + x.key + x.right.key)
   	print(x.left, x.key, x.right)
   	#print(x.left.key, x.key, x.right.key)
