@@ -330,7 +330,8 @@ if __name__ == "__main__":
   	if (line == '0'):
   		break
   	x = tree.search(line)
-  	output.write(""+x.left.key + x.key + x.right.key)
+  	output.write(""+x.left + x.key + x.right)
+  	#output.write(""+x.left.key + x.key + x.right.key)
   	print(x.left, x.key, x.right)
   	#print(x.left.key, x.key, x.right.key)
   s.close()
