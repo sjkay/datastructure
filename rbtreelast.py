@@ -3,8 +3,6 @@ class Node:
   BLACK = False
 
   def __init__(self, key, color = RED):
-    if not type(color) == bool:
-      raise TypeError("Bad value for color parameter, expected True/False but given %s" % color)
     self.color = color
     self.key = key
     self.left = self.right = self.parent = NilNode.instance()
